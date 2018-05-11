@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.8.3.xsd">
+
+	<context:component-scan
+		base-package="co.com.javeriana.soap.integracion" />
+
+	<cxf:cxfEndpoint id="expresoBolivarianoSoap"
+		address="/services/hoteldanncarlton" endpointName="a:ExpresoBolivarianoServicesEndpoint"
+		serviceName="a:ExpresoBolivarianoService" wsdlURL="wsdl/expresobolivariano.wsdl"
+		serviceClass="org.example.demo.ExpresoBolivarianoSystemServices"
+		xmlns:a="http://www.example.org/demo/">
+		<cxf:properties>
+			<entry key="dataFormat" value="PAYLOAD" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+
+	<camel:camelContext
+		xmlns="http://camel.apache.org/schema/spring">
+	
+		<camel:dataFormats>
+			<camel:jaxb id="cancelarPayload" contextPath="org.example.demo"
+				partClass="org.example.demo.CancelarReserva" />
+			<camel:jaxb id="obtenerPayload" contextPath="org.example.demo"
+				partClass="org.example.demo.ObtenerReserva" />
+			<camel:jaxb id="realizarPayload" contextPath="org.example.demo"
+				partClass="org.example.demo.RealizarReserva" />
+		</camel:dataFormats>
+		
+		<camel:route id="soap-integration">
+			<camel:from uri="cxf:bean:expresoBolivarianoSoap" />
+			<camel:choice>
+				<camel:when>
+					<camel:simple>${in.header.operationName} == 'cancelarReserva'</camel:simple>
+					<camel:log message="LA OPERACION ES UN CANCELAR RESERVA" />
+					<camel:unmarshal ref="cancelarPayload" />
+					<camel:to uri="bean:soapService?method=cancelarReserva" />
+				</camel:when>
+				<camel:when>
+					<camel:simple>${in.header.operationName} == 'obtenerReserva'</camel:simple>
+					<camel:log message="LA OPERACION ES UN OBTENER RESERVA" />
+					<camel:unmarshal ref="obtenerPayload" />
+					<camel:to uri="bean:soapService?method=obtenerReserva" />
+				</camel:when>
+				<camel:when>
+					<camel:simple>${in.header.operationName} == 'realizarReserva'</camel:simple>
+					<camel:log message="LA OPERACION ES UN REALIZAR RESERVA" />
+					<camel:unmarshal ref="realizarPayload" />
+					<camel:to uri="bean:soapService?method=realizarReserva" />
+				</camel:when>
+			</camel:choice>
+		</camel:route>
+
+	</camel:camelContext>
+
+</beans>

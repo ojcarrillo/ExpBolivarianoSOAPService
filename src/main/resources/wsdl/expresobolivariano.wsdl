@@ -1,0 +1,182 @@
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.example.org/demo/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="expresoBolivarianoService"
+	targetNamespace="http://www.example.org/demo/">
+	<wsdl:types>
+		<xsd:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://www.example.org/demo/"
+			elementFormDefault="unqualified" version="1.0">
+			<xsd:element name="cancelarReserva">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="idReserva" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="cancelarReservaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="estado" type="xsd:string" />
+						<xsd:element minOccurs="0" name="motivoEstado" type="xsd:string" />
+						<xsd:element minOccurs="0" name="fecha" type="xsd:dateTime" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="obtenerReserva">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="idReserva" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="obtenerReservaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="idViaje" type="xsd:string"/>
+						<xsd:element minOccurs="0" name="fechaSalida" type="xsd:date"/>
+						<xsd:element minOccurs="0" name="ciudadOrigen" type="xsd:string"/>
+						<xsd:element minOccurs="0" name="ciudadDestino" type="xsd:string"/>
+						<xsd:element minOccurs="0" name="puestos" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="realizarReserva">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="fechaInicio" type="xsd:date"/>
+						<xsd:element minOccurs="0" name="ciudadOrigen" type="xsd:string"/>
+						<xsd:element minOccurs="0" name="ciudadDestino" type="xsd:string"/>
+						<xsd:element minOccurs="0" name="puestos" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="realizarReservaResponse">
+				<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" name="idViaje" type="xsd:string"/>
+							<xsd:element minOccurs="0" name="fechaSalida" type="xsd:date"/>
+							<xsd:element minOccurs="0" name="ciudadOrigen" type="xsd:string"/>
+							<xsd:element minOccurs="0" name="ciudadDestino" type="xsd:string"/>
+							<xsd:element minOccurs="0" name="puestos" type="xsd:string"/>
+							<xsd:element minOccurs="0" name="estado" type="xsd:string"/>
+							<xsd:element minOccurs="0" name="motivoEstado" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="consultarItinerarios">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="fechaInicio" type="xsd:date"/>
+						<xsd:element minOccurs="0" name="fechaFinal" type="xsd:date"/>
+						<xsd:element minOccurs="0" name="ciudadOrigen" type="xsd:string"/>
+						<xsd:element minOccurs="0" name="ciudadDestino" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="consultarItinerariosResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="itinerarios">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element minOccurs="0" name="idViaje" type="xsd:string"/>
+									<xsd:element minOccurs="0" name="fechaSalida" type="xsd:date"/>
+									<xsd:element minOccurs="0" name="ciudadOrigen" type="xsd:string"/>
+									<xsd:element minOccurs="0" name="ciudadDestino" type="xsd:string"/>
+									<xsd:element minOccurs="0" name="puestos" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="cancelarReservaRequest">
+		<wsdl:part element="tns:cancelarReserva" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="cancelarReservaResponse">
+		<wsdl:part element="tns:cancelarReservaResponse"
+			name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="obtenerReservaRequest">
+		<wsdl:part name="parameters" element="tns:obtenerReserva" />
+	</wsdl:message>
+	<wsdl:message name="obtenerReservaResponse">
+		<wsdl:part name="parameters"
+			element="tns:obtenerReservaResponse" />
+	</wsdl:message>
+	<wsdl:message name="realizarReservaRequest">
+		<wsdl:part name="parameters" element="tns:realizarReserva"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="realizarReservaResponse">
+		<wsdl:part name="parameters"
+			element="tns:realizarReservaResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="consultarItinerariosRequest">
+		<wsdl:part name="parameters" element="tns:consultarItinerarios"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="consultarItinerariosResponse">
+		<wsdl:part name="parameters" element="tns:consultarItinerariosResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ExpresoBolivarianoSystemServices">
+		<wsdl:operation name="cancelarReserva">
+			<wsdl:input message="tns:cancelarReservaRequest" />
+			<wsdl:output message="tns:cancelarReservaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="obtenerReserva">
+			<wsdl:input message="tns:obtenerReservaRequest" />
+			<wsdl:output message="tns:obtenerReservaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="realizarReserva">
+			<wsdl:input message="tns:realizarReservaRequest"></wsdl:input>
+			<wsdl:output message="tns:realizarReservaResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="consultarItinerarios">
+			<wsdl:input message="tns:consultarItinerariosRequest"></wsdl:input>
+			<wsdl:output message="tns:consultarItinerariosResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ExpresoBolivarianoServicesEndpoint"
+		type="tns:ExpresoBolivarianoSystemServices">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="cancelarReserva">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="cancelarReservaRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="cancelarReservaResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="obtenerReserva">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="obtenerReservaRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="obtenerReservaResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="realizarReserva">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="realizarReservaRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="realizarReservaResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ExpresoBolivarianoService">
+		<wsdl:port binding="tns:ExpresoBolivarianoServicesEndpoint"
+			name="ExpresoBolivarianoServicesEndpoint">
+			<soap:address
+				location="http://localhost:8181/cxf/services/ExpresoBolivarianoService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
