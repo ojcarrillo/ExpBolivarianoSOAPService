@@ -46,6 +46,7 @@ http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/came
 					<camel:log message="LA OPERACION ES UN CANCELAR RESERVA" />
 					<camel:unmarshal ref="cancelarPayload" />
 					<camel:to uri="bean:soapService?method=cancelarReserva" />
+					<camel:log message="${body}"/>					
 				</camel:when>
 				<camel:when>
 					<camel:simple>${in.header.operationName} == 'obtenerReserva'</camel:simple>

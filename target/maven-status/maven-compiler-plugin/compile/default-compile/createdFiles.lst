@@ -3,6 +3,8 @@ org\example\demo\package-info.class
 org\example\demo\ExpresoBolivarianoSystemServices.class
 org\example\demo\RealizarReservaResponse.class
 org\example\demo\CancelarReservaResponse.class
+co\com\javeriana\soap\integracion\ftp\FTPInvoker.class
+co\com\javeriana\soap\integracion\util\Utils.class
 org\example\demo\ConsultarItinerariosResponse$Itinerarios.class
 org\example\demo\ConsultarItinerarios.class
 co\com\javeriana\soap\integracion\ExpBolivarianoSOAPService\SoapService.class

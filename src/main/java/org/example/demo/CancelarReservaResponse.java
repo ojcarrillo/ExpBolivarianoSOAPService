@@ -21,7 +21,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence&gt;
  *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="motivoEstado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="fechaRespuesta" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="codigoEstado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -34,7 +35,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "", propOrder = {
     "estado",
     "motivoEstado",
-    "fecha"
+    "fechaRespuesta",
+    "codigoEstado"
 })
 @XmlRootElement(name = "cancelarReservaResponse")
 public class CancelarReservaResponse {
@@ -42,7 +44,8 @@ public class CancelarReservaResponse {
     protected String estado;
     protected String motivoEstado;
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar fecha;
+    protected XMLGregorianCalendar fechaRespuesta;
+    protected String codigoEstado;
 
     /**
      * Obtiene el valor de la propiedad estado.
@@ -93,27 +96,51 @@ public class CancelarReservaResponse {
     }
 
     /**
-     * Obtiene el valor de la propiedad fecha.
+     * Obtiene el valor de la propiedad fechaRespuesta.
      * 
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getFecha() {
-        return fecha;
+    public XMLGregorianCalendar getFechaRespuesta() {
+        return fechaRespuesta;
     }
 
     /**
-     * Define el valor de la propiedad fecha.
+     * Define el valor de la propiedad fechaRespuesta.
      * 
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFecha(XMLGregorianCalendar value) {
-        this.fecha = value;
+    public void setFechaRespuesta(XMLGregorianCalendar value) {
+        this.fechaRespuesta = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad codigoEstado.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCodigoEstado() {
+        return codigoEstado;
+    }
+
+    /**
+     * Define el valor de la propiedad codigoEstado.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCodigoEstado(String value) {
+        this.codigoEstado = value;
     }
 
 }
