@@ -1,13 +1,13 @@
 <wsdl:definitions
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:tns="http://www.example.org/demo/"
+	xmlns:tns="http://www.expresobolivariano.org/demo/"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="expresoBolivarianoService"
-	targetNamespace="http://www.example.org/demo/">
+	targetNamespace="http://www.expresobolivariano.org/demo/">
 	<wsdl:types>
 		<xsd:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-			targetNamespace="http://www.example.org/demo/"
+			targetNamespace="http://www.expresobolivariano.org/demo/"
 			elementFormDefault="unqualified" version="1.0">
 			<xsd:element name="cancelarReserva">
 				<xsd:complexType>

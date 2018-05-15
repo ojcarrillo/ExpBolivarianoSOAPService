@@ -17,10 +17,10 @@ http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/came
 		base-package="co.com.javeriana.soap.integracion" />
 
 	<cxf:cxfEndpoint id="expresoBolivarianoSoap"
-		address="/services/hoteldanncarlton" endpointName="a:ExpresoBolivarianoServicesEndpoint"
+		address="/services/expresobolivariano" endpointName="a:ExpresoBolivarianoServicesEndpoint"
 		serviceName="a:ExpresoBolivarianoService" wsdlURL="wsdl/expresobolivariano.wsdl"
-		serviceClass="org.example.demo.ExpresoBolivarianoSystemServices"
-		xmlns:a="http://www.example.org/demo/">
+		serviceClass="org.expresobolivariano.demo.ExpresoBolivarianoSystemServices"
+		xmlns:a="http://www.expresobolivariano.org/demo/">
 		<cxf:properties>
 			<entry key="dataFormat" value="PAYLOAD" />
 		</cxf:properties>
@@ -30,12 +30,12 @@ http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/came
 		xmlns="http://camel.apache.org/schema/spring">
 	
 		<camel:dataFormats>
-			<camel:jaxb id="cancelarPayload" contextPath="org.example.demo"
-				partClass="org.example.demo.CancelarReserva" />
-			<camel:jaxb id="obtenerPayload" contextPath="org.example.demo"
-				partClass="org.example.demo.ObtenerReserva" />
-			<camel:jaxb id="realizarPayload" contextPath="org.example.demo"
-				partClass="org.example.demo.RealizarReserva" />
+			<camel:jaxb id="cancelarPayload" contextPath="org.expresobolivariano.demo"
+				partClass="org.expresobolivariano.demo.CancelarReserva" />
+			<camel:jaxb id="obtenerPayload" contextPath="org.expresobolivariano.demo"
+				partClass="org.expresobolivariano.demo.ObtenerReserva" />
+			<camel:jaxb id="realizarPayload" contextPath="org.expresobolivariano.demo"
+				partClass="org.expresobolivariano.demo.RealizarReserva" />
 		</camel:dataFormats>
 		
 		<camel:route id="soap-integration">

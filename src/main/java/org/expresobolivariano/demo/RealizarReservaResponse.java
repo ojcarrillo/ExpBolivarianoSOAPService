@@ -1,5 +1,5 @@
 
-package org.example.demo;
+package org.expresobolivariano.demo;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -50,8 +50,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "fechaRespuesta",
     "codigoEstado"
 })
-@XmlRootElement(name = "obtenerReservaResponse")
-public class ObtenerReservaResponse {
+@XmlRootElement(name = "realizarReservaResponse")
+public class RealizarReservaResponse {
 
     protected String idReserva;
     protected String idViaje;

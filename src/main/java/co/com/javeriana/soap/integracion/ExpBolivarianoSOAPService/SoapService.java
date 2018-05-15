@@ -1,23 +1,18 @@
 package co.com.javeriana.soap.integracion.ExpBolivarianoSOAPService;
 
-import java.io.File;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.lang3.StringUtils;
-import org.example.demo.CancelarReserva;
-import org.example.demo.CancelarReservaResponse;
-import org.example.demo.ObtenerReserva;
-import org.example.demo.ObtenerReservaResponse;
-import org.example.demo.RealizarReserva;
-import org.example.demo.RealizarReservaResponse;
+import org.expresobolivariano.demo.CancelarReserva;
+import org.expresobolivariano.demo.CancelarReservaResponse;
+import org.expresobolivariano.demo.ObtenerReserva;
+import org.expresobolivariano.demo.ObtenerReservaResponse;
+import org.expresobolivariano.demo.RealizarReserva;
+import org.expresobolivariano.demo.RealizarReservaResponse;
 import org.springframework.stereotype.Component;
 
 import co.com.javeriana.soap.integracion.ftp.FTPInvoker;

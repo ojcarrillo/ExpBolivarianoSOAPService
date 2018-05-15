@@ -18,8 +18,12 @@ import java.util.Date;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FTPInvoker {
+	
+	private static final Logger log = LoggerFactory.getLogger(FTPInvoker.class);
 
 	static String server = "35.203.93.92";
 	static Integer port = 2021;
@@ -40,10 +44,10 @@ public class FTPInvoker {
 			success = ftpClient.storeFile(filenameServer, inputStream);
 			inputStream.close();
 			if (success) {
-				System.out.println("The first file is uploaded successfully.");
+				log.info("The first file is uploaded successfully.");
 			}
 		} catch (IOException ex) {
-			System.out.println("Error: " + ex.getMessage());
+			log.info("Error: " + ex.getMessage());
 			ex.printStackTrace();
 		} finally {
 			try {
@@ -52,7 +56,7 @@ public class FTPInvoker {
 					ftpClient.disconnect();
 				}
 			} catch (IOException ex) {
-				ex.printStackTrace();
+				log.info("Error: " + ex.getMessage());
 			}
 		}
 		return success;
@@ -86,15 +90,17 @@ public class FTPInvoker {
 				}
 			} while (retry < 5);
 			if (retry == 5) {
+				log.error("NUMERO DE INTENTOS FALLIDOS SUPERADOS");
 				throw new Exception("NUMERO DE INTENTOS FALLIDOS SUPERADOS");
 			}
 			if (success) {
-				System.out.println("File #1 has been downloaded successfully.");
+				log.info("File #1 has been downloaded successfully.");
 			}
 		} catch (IOException ex) {
-			System.out.println("Error: " + ex.getMessage());
+			log.info("Error: " + ex.getMessage());
 			ex.printStackTrace();
 		} catch (Exception e) {
+			log.info("Error: " + e.getMessage());
 			e.printStackTrace();
 		} finally {
 			try {
@@ -103,6 +109,7 @@ public class FTPInvoker {
 					ftpClient.disconnect();
 				}
 			} catch (IOException ex) {
+				log.info("Error: " + ex.getMessage());
 				ex.printStackTrace();
 			}
 		}
@@ -116,6 +123,7 @@ public class FTPInvoker {
 			Files.write(Paths.get(queryFile.getAbsolutePath()), datos.getBytes(), StandardOpenOption.APPEND);
 			return queryFile;
 		} catch (IOException e) {
+			log.info("Error: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return null;
@@ -130,6 +138,7 @@ public class FTPInvoker {
 				readFile.close();
 				Files.deleteIfExists(file.toPath());
 			} catch (IOException e) {
+				log.info("Error: " + e.getMessage());
 				e.printStackTrace();
 			}
 		}

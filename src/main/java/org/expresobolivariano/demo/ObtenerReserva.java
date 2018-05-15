@@ -1,5 +1,5 @@
 
-package org.example.demo;
+package org.expresobolivariano.demo;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "idReserva"
 })
-@XmlRootElement(name = "cancelarReserva")
-public class CancelarReserva {
+@XmlRootElement(name = "obtenerReserva")
+public class ObtenerReserva {
 
     protected String idReserva;
 
