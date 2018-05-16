@@ -113,8 +113,8 @@ public class SoapService {
 				response.setCiudadOrigen(rsta.substring(31, 51).trim());
 				response.setCiudadDestino(rsta.substring(51, 72).trim());
 				response.setPuestos(rsta.substring(72, rsta.length()).trim());
-				response.setEstado("COMPLETO");
-				response.setMotivoEstado("RESERVA PENDIENTE DE CONFIRMAR");
+				response.setEstado(rsta.substring(0, 9).trim());
+				response.setMotivoEstado("RESERVA REALIZADA");
 				response.setFechaRespuesta(Utils.getFechaEvento());
 				response.setCodigoEstado("2");
 			}else {

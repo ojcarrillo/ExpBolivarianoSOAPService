@@ -25,7 +25,7 @@ public class FTPInvoker {
 	
 	private static final Logger log = LoggerFactory.getLogger(FTPInvoker.class);
 
-	static String server = "35.203.93.92";
+	static String server = "localhost";
 	static Integer port = 2021;
 	static String user = "touresbalon";
 	static String pass = "verysecretpwd";
